@@ -42,8 +42,22 @@ document.addEventListener("DOMContentLoaded", () => {
     ).join('');
   };
 
+  // function Search contacts
+  const searchContacts = (contacts, searchValue) => {
+    return contacts.filter(
+      (contact) =>
+        contact.name.toLowerCase().includes(searchValue) ||
+        contact.phone.toLowerCase().includes(searchValue) ||
+        contact.email.toLowerCase().includes(searchValue)
+    );
+  };
 
-
+    // btn of search
+    searchInput.addEventListener("input", () => {
+      const searchValue = searchInput.value.toLowerCase().trim();
+      const filteredSearchContacts = searchContacts(contacts, searchValue);
+      renderContacts(filteredSearchContacts);
+    });
 
   renderContacts(contacts);
   });
