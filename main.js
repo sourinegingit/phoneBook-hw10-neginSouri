@@ -16,3 +16,5 @@ document.addEventListener("DOMContentLoaded", () => {
   const saveBtn = document.getElementById("saveBtn");
   const closeModalBtn = document.getElementById("closeModal");
   const searchInput = document.getElementById("search");
+
+  });
