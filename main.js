@@ -71,5 +71,11 @@ document.addEventListener("DOMContentLoaded", () => {
     contacts = deleteContact(contacts, id);
     renderContacts(contacts);
   };
+
+  // Close modal
+  const closeModal = () => {
+    contactModal.classList.add("hidden");
+  };
+
   renderContacts(contacts);
   });
