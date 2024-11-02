@@ -77,6 +77,15 @@ document.addEventListener("DOMContentLoaded", () => {
     contactModal.classList.add("hidden");
   };
 
+  // Open modal to edit a contact  
+  window.openEditModal = (id) => {  
+    const contact = contacts.find(c => c.id === id);  
+    if (contact) {  
+     
+      modalTitle.innerText = 'Edit Contact';  
+      contactModal.classList.remove('hidden');  
+    }  
+  };  
     // adeventListener
   // btn of form that submit
   addContactBtn.addEventListener("click", (e) => {
