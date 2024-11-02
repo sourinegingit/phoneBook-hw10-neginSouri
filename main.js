@@ -58,6 +58,19 @@ document.addEventListener("DOMContentLoaded", () => {
       const filteredSearchContacts = searchContacts(contacts, searchValue);
       renderContacts(filteredSearchContacts);
     });
+    
+      // modal btn
+  closeModalBtn.addEventListener("click", closeModal);
 
+  
+  // Open modal to edit a contact  
+  window.openEditModal = (id) => {  
+    const contact = contacts.find(c => c.id === id);  
+    if (contact) {  
+     
+      modalTitle.innerText = 'Edit Contact';  
+      contactModal.classList.remove('hidden');  
+    }  
+  };  
   renderContacts(contacts);
   });
