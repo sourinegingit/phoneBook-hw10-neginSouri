@@ -17,4 +17,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeModalBtn = document.getElementById("closeModal");
   const searchInput = document.getElementById("search");
 
+
+  let contacts = [
+    { name: "zahra", phone: "09125648978", email: "nsouri@",id:"1" },
+    { name: "negin", phone: "09125648978", email: "nsouri@" ,id:"2"},
+    { name: "sara", phone: "09125648978", email: "zahra@" ,id:"3"},
+    { name: "negin", phone: "09125648978", email: "nsouri@",id:"4" },
+  ];
+
+  const renderContacts = (contacts) => {
+    contactListElement.innerHTML="";
+    contactListElement.innerHTML = contacts.map(
+      (contact) => `  
+       <tr>  
+         <td class="border px-4 py-2">${contact.name}</td>  
+         <td class="border px-4 py-2">${contact.phone}</td>  
+         <td class="border px-4 py-2">${contact.email}</td>  
+         <td class="border px-4 py-2">  
+           <button class=" bg-blue-700 text-white p-3" onclick="openEditModal('${contact.id}')">Edit</button>  
+           <button class="bg-red-700 text-white p-3" onclick="deleteContact('${contact.id}')">Delete</button>  
+         </td>  
+       </tr>  
+     `
+    ).join('');
+  };
+
+
+
+
+  renderContacts(contacts);
   });
