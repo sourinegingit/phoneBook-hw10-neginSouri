@@ -59,18 +59,17 @@ document.addEventListener("DOMContentLoaded", () => {
       renderContacts(filteredSearchContacts);
     });
     
-      // modal btn
-  closeModalBtn.addEventListener("click", closeModal);
-
-  
-  // Open modal to edit a contact  
-  window.openEditModal = (id) => {  
-    const contact = contacts.find(c => c.id === id);  
-    if (contact) {  
-     
-      modalTitle.innerText = 'Edit Contact';  
-      contactModal.classList.remove('hidden');  
-    }  
-  };  
+      // Delete a contact
+  const deleteContact = (contacts, id) => {
+    const updatedDeleteContacts = contacts.filter(
+      (contact) => contact.id !== id
+    );
+    // saveContacts(updatedDeleteContacts); 
+    return updatedDeleteContacts;
+  };
+  window.deleteContact = (id) => {
+    contacts = deleteContact(contacts, id);
+    renderContacts(contacts);
+  };
   renderContacts(contacts);
   });
