@@ -77,5 +77,20 @@ document.addEventListener("DOMContentLoaded", () => {
     contactModal.classList.add("hidden");
   };
 
+    // adeventListener
+  // btn of form that submit
+  addContactBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const newContact = {
+      name: NameInput.value,
+      phone: PhoneInput.value,
+      email: EmailInput.value,
+      id: new Date().getTime().toString(),
+    };
+    // contacts=[...contacts,newContact];
+    contacts.push(newContact);
+    renderContacts(contacts);
+    contactForm.reset();
+  });
   renderContacts(contacts);
   });
