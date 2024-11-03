@@ -55,12 +55,12 @@ document.addEventListener("DOMContentLoaded", () => {
       .map(
         (contact) => `  
        <tr>  
-         <td class="border px-4 py-2">${contact.name}</td>  
-         <td class="border px-4 py-2">${contact.phone}</td>  
-         <td class="border px-4 py-2">${contact.email}</td>  
+         <td class="border px-4 py-2 text-gray-100">${contact.name}</td>  
+         <td class="border px-4 py-2 text-gray-100">${contact.phone}</td>  
+         <td class="border px-4 py-2 text-gray-100">${contact.email}</td>  
          <td class="border px-4 py-2">  
-           <button class=" bg-blue-700 text-white p-3" onclick="openEditModal('${contact.id}')">Edit</button>  
-           <button class="bg-red-700 text-white p-3" onclick="deleteContact('${contact.id}')">Delete</button>  
+           <button class=" bg-blue-800 text-white p-3 rounded-md" onclick="openEditModal('${contact.id}')">Edit</button>  
+           <button class="bg-red-700 text-white p-3 rounded-md" onclick="deleteContact('${contact.id}')">Delete</button>  
          </td>  
        </tr>  
      `
