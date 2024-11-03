@@ -27,21 +27,19 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load contacts from local storage
   const loadContacts = () => JSON.parse(localStorage.getItem("contacts")) || [];
 
-  // Add a new contact
-  const addContact = (contacts, newContact) => {
-    const updatedContacts = [...contacts, newContact];
-    saveContacts(updatedContacts);
-    return updatedContacts;
-  };
+  // Add a new contact  
+  const addContact = (contacts, newContact) => {  
+    const updatedContacts = [...contacts, newContact];  
+    saveContacts(updatedContacts);  
+    return updatedContacts;  
+  };  
 
-  // Update a contact
-  const updateContact = (contacts, updatedContact) => {
-    const updatedContacts = contacts.map((contact) =>
-      contact.id === updatedContact.id ? updatedContact : contact
-    );
-    saveContacts(updatedContacts);
-    return updatedContacts;
-  };
+  // Update a contact  
+  const updateContact = (contacts, updatedContact) => {  
+    const updatedContacts = contacts.map(contact => contact.id === updatedContact.id ? updatedContact : contact);  
+    saveContacts(updatedContacts);  
+    return updatedContacts;  
+  };  
 
   // Save contacts to local storage
   const saveContacts = (contacts) => {
@@ -120,15 +118,33 @@ document.addEventListener("DOMContentLoaded", () => {
   // modal btn
   closeModalBtn.addEventListener("click", closeModal);
 
-  // Open modal to edit a contact
-  window.openEditModal = (id) => {
-    const contact = contacts.find((c) => c.id === id);
-    if (contact) {
-      modalTitle.innerText = "Edit Contact";
-      contactModal.classList.remove("hidden");
-    }
-  };
+ // Open modal to edit a contact  
+ window.openEditModal = (id) => {  
+  const contact = contacts.find(c => c.id === id);  
+  if (contact) {  
+    contactNameInput.value = contact.name;  
+    contactPhoneInput.value = contact.phone;  
+    contactEmailInput.value = contact.email;  
+    editIdInput.value = contact.id;  
+    modalTitle.innerText = 'Edit Contact';  
+    contactModal.classList.remove('hidden');  
+  }  
+}; 
+
+
+  saveBtn.addEventListener('click', () => {  
+    const id = editIdInput.value;  
+    const updatedContact = {  
+      id,  
+      name: contactNameInput.value,  
+      phone: contactPhoneInput.value,  
+      email: contactEmailInput.value  
+    };
+    contacts = updateContact(contacts, updatedContact);  
+    renderContacts(contacts);  
+    closeModal(); 
   //
+}); 
   let contacts = loadContacts();
   renderContacts(contacts);
 });
